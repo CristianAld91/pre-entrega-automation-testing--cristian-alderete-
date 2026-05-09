@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-# test para verificar que el login se realiza correctamente y se muestra el catalogo de productos
+# test para verificar que el login se ingresa correctamente y se muestra el catalogo de productos al usuario 
 def test_login(driver):
     try:
         login(driver, "standard_user", "secret_sauce") 
@@ -20,11 +20,11 @@ def test_login(driver):
 def test_catalogo_productos(driver):
     try:
         login(driver, "standard_user", "secret_sauce")
-        
+        #valida titulo
         title = driver.find_element(By.CLASS_NAME, "title")
         assert title.text == "Products"
         
-        # Validar que se muestran los productos en el catalogo
+        # Valida que se muestran los productos en el catalogo
         productos = driver.find_elements(By.CLASS_NAME, "inventory_item")
         assert len(productos) > 0
         
@@ -44,18 +44,18 @@ def test_catalogo_productos(driver):
 def test_agregar_producto_al_carrito(driver):
     login(driver, "standard_user", "secret_sauce")
     #wait para que se cargue el catalogo de productos
-    wait = WebDriverWait(driver, 20)
+    wait = WebDriverWait(driver, 10)
     #declaramos el nombre del producto a agregar al carrito de compras
     nombre_producto = driver.find_element(By.CLASS_NAME, "inventory_item_name").text
     #verificar que el producto esta ticketeado en el catalogo
     boton_add_to_cart = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Add to cart')]")))
     boton_add_to_cart.click()
-    #validar carrito de compras
+    #valida carrito de compras
     carrito = driver.find_element(By.CLASS_NAME, "shopping_cart_badge")
     assert carrito.text >= "1"
-    #clic en el carrito de compras
+    #click en el carrito de compras
     driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
-    #validar que el producto agregado al carrito se muestra en la pagina del carrito de compras
+    #valida que el producto agregado al carrito se muestra en la pagina del carrito de compras
     producto_carrito  = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "inventory_item_name")))
     assert producto_carrito.text == nombre_producto
     
@@ -65,11 +65,11 @@ def test_menu_lateral(driver):
     login(driver, "standard_user", "secret_sauce")
     wait = WebDriverWait(driver, 10)
     
-    # Clic en el menú lateral
+    # Click en el menu lateral
     menu_lateral = wait.until(EC.element_to_be_clickable((By.ID, "react-burger-menu-btn")))
     menu_lateral.click()
     
-    # Validar que los elementos del menu se muetran correctamente
+    # Valida que los elementos del menu se muetran correctamente
     try:
         elemento_menu = wait.until(EC.visibility_of_element_located((By.ID, "inventory_sidebar_link"))).text
         assert elemento_menu == "All Items"
