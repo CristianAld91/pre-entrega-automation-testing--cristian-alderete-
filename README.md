@@ -19,9 +19,6 @@ Este proyecto tiene como objetivo automatizar las pruebas de la aplicación web 
 - **pytest**: Framework de pruebas utilizado para ejecutar y gestionar las pruebas.
 - **WebDriver**: Interfaz para controlar un navegador web a través de código.
 
-## Instrucciones de Instalación de Dependencias
-Para instalar las dependencias necesarias, asegúrate de tener Python y pip instalados en tu sistema. Luego, ejecuta el siguiente comando en tu terminal:
-
 ## Resultados Esperados
 Al ejecutar las pruebas, deberías ver un resumen que indique el número de pruebas pasadas y fallidas. Si todas las pruebas pasan, significa que la aplicación funciona como se espera.
 
@@ -63,7 +60,9 @@ Para generar el reporte, asegúrate de tener instaladas las dependencias necesar
 
 ```bash
 pytest tests/test_saucedemo.py --html=reporte.html
+```
 
-
+## Instrucciones de Instalación de Dependencias
+Para instalar las dependencias necesarias, asegúrate de tener Python y pip instalados en tu sistema. Luego, ejecuta el siguiente comando en tu terminal:
 ```bash
 pip install -r requirements.txt
