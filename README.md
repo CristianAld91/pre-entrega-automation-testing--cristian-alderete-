@@ -4,7 +4,8 @@
 
 ### Autor: Cristian Alderete
 
-### Profesor: Brayan Farfan
+### Profesor: Brayann Farfan
+### Tutora: Amancay Arribillaga
 
 ## Link del Repositorio
 [Repositorio en GitHub](https://github.com/CristianAld91/pre-entrega-automation-testing--cristian-alderete-)
