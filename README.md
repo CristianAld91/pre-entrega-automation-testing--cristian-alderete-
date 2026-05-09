@@ -1,10 +1,10 @@
 # Proyecto de automatización de saucedemo
 
-## Cursada: Automatización QA
+### Cursada: Automatización QA
 
-## Autor: Cristian Alderete
+### Autor: Cristian Alderete
 
-## Profesor: Brayan Farfan
+### Profesor: Brayan Farfan
 
 ## Link del Repositorio
 [Repositorio en GitHub](https://github.com/CristianAld91/pre-entrega-automation-testing--cristian-alderete-)
