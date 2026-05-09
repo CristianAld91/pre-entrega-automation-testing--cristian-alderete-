@@ -1,4 +1,2 @@
-# Ignore the conftestj_emplo.py file
-conftestej_emplo.py
-
-main.py
+# Ignorar arquivos e pastas específicos
+/ignorar/
