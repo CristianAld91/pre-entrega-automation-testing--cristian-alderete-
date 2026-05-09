@@ -24,13 +24,17 @@ Para instalar las dependencias necesarias, asegúrate de tener Python y pip inst
 ## Resultados Esperados
 Al ejecutar las pruebas, deberías ver un resumen que indique el número de pruebas pasadas y fallidas. Si todas las pruebas pasan, significa que la aplicación funciona como se espera.
 
-## Comandos utilizados en las pruebas
+## Comandos Utilizados en las Pruebas
+
+Ejecuta los siguientes comandos para correr las pruebas:
+
+```bash
 pytest tests/test_saucedemo.py -v
 pytest tests/test_saucedemo.py::test_login -v
 pytest tests/test_saucedemo.py::test_catalogo_productos -v
 pytest tests/test_saucedemo.py::test_agregar_producto_al_carrito -v
 pytest tests/test_saucedemo.py::test_menu_lateral -v
-
+```
 ## Reporte de Pruebas
 
 Este documento proporciona un resumen de los casos de prueba ejecutados y sus resultados, generados en el archivo `reporte.html`. Este reporte es el resultado de la ejecución de pruebas automatizadas utilizando `pytest` y `pytest-html`, y contiene información detallada sobre el estado de cada prueba.
