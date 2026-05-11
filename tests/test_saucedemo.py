@@ -34,7 +34,6 @@ def test_catalogo_productos(driver):
         print("Error en test_catalogo_productos:", e)
         print("HTML de la página:", driver.page_source)
     
-    
 #tipos de ejecucion:
 #pytest tests/test_saucedemo.py -v
 #tests/test_sausedemo.py::test_catalogo_productos -v
