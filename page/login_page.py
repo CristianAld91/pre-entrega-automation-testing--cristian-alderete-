@@ -16,7 +16,7 @@ class LoginPage:
         self.driver.get(self.URL)
         #wait para que se cargue la pagina de login
     def login_page(self, username, password):
-        self.wait.until(EC.visibility_of_element_located(self._USERNAME)).send_keys(username)
-        self.wait.until(EC.visibility_of_element_located(self._PASSWORD)).send_keys(password)
+        self.wait.until(EC.presence_of_element_located(self._USERNAME)).send_keys(username)
+        self.wait.until(EC.presence_of_element_located(self._PASSWORD)).send_keys(password)
         self.wait.until(EC.element_to_be_clickable(self._LOGIN_BUTTON)).click()
 
