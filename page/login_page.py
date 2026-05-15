@@ -20,3 +20,6 @@ class LoginPage:
         self.wait.until(EC.presence_of_element_located(self._PASSWORD)).send_keys(password)
         self.wait.until(EC.element_to_be_clickable(self._LOGIN_BUTTON)).click()
 
+    def validar_message_error(self):
+        error_message = self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "h3[data-test='error']"))).text
+        return error_message
