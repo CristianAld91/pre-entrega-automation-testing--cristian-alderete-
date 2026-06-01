@@ -1,4 +1,9 @@
+
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from faker import Faker
+fake = Faker()
 
 class CheckoutPage:
     ADD_TO_CART_BUTTON = (By.ID, "add-to-cart-sauce-labs-backpack") #delcaramos el localizador del boton agregar al carrito
@@ -13,6 +18,7 @@ class CheckoutPage:
     
     def __init__(self, driver):
         self.driver = driver
+        self.wait = WebDriverWait(self.driver, 10)
         
     def agregar_producto(self):
         self.driver.find_element(*self.ADD_TO_CART_BUTTON).click()
@@ -23,11 +29,16 @@ class CheckoutPage:
     def iniciar_carrito(self):
         self.driver.find_element(*self.CHECK_BUTTON_CART).click()
 
-    def completar_formulario(self, usuario):
-        self.driver.find_element(*self.FIRS_NAME).send_keys(usuario['first_name'])
-        self.driver.find_element(*self.LAST_NAME).send_keys(usuario['last_name'])
-        self.driver.find_element(*self.POSTAL_CODE).send_keys(usuario['postal_code'])
+    def completar_formulario(self):
+        
+        first_name = fake.first_name()
+        last_name = fake.last_name()
+        postal_code = fake.postalcode()
 
+        self.wait.until(EC.visibility_of_element_located(self.FIRS_NAME)).send_keys(first_name)
+        self.wait.until(EC.visibility_of_element_located(self.LAST_NAME)).send_keys(last_name)
+        self.wait.until(EC.visibility_of_element_located(self.POSTAL_CODE)).send_keys(postal_code)
+        
     def continuar(self):
         self.driver.find_element(*self.CONTINUE).click()
     

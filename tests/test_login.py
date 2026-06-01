@@ -1,19 +1,28 @@
 from page.login_page import LoginPage
-from data.users import USERS
+#from data.users import USERS
 import pytest
-@pytest.mark.parametrize("username, password", USERS )
-def test_login(driver, username, password):
-    """ try:
-        LoginPage(driver).login_page(username, password)
-        LoginPage(driver).open(
-            username, password
-        )
-        
-    except Exception as e:
-        print("Error en test_login:", e)
-        print("HTML de la página:", driver.page_source)
-    """
-    login_page = LoginPage(driver)
+from utils.helpers import load_user_csv
+from utils.helpers import load_user_json
+from faker import Faker
 
-    login_page.open()
-    login_page.login(username, password)
+load_csv = load_user_csv("data/users.csv")
+load_json = load_user_json("data/users.json")
+fake = Faker()
+#@pytest.mark.parametrize("username, password", USERS )
+@pytest.mark.parametrize("username, password", load_json)
+#@pytest.mark.parametrize("username, password", load_csv)
+
+def test_login(driver, username, password):
+    login = LoginPage(driver)
+
+    login.open()
+    login.login_page(username, password)
+
+    name = fake.name()
+    first_name =fake.first_name()
+    last_name = fake.last_name()
+    email = fake.email()
+    codigo_postal = fake.postcode()
+    
+    print("datos generados:", name, first_name, last_name, email, codigo_postal)
+    #pytest tests/test_login.py::test_login -v -s (mostar datos de faker con -s)
